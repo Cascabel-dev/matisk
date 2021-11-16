@@ -90,7 +90,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install flatpak -y && wget https://flathub.org/repo/flathub.flatpakrepo && flatpak remote-add --if-not-exists flathub flathub.flatpakrepo && rm -rf flathub.flatpakrepo && flatpak install flathub com.github.tchx84.Flatseal -y; break;;
+        [Y]* ) sudo dnf install flatpak -y && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.github.tchx84.Flatseal; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
