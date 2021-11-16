@@ -73,35 +73,24 @@ while true; do
 done
 
 while true; do
-    clear && read -p "Would you like to install FFmpeg?  This is important for select media's proper playback.  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
+    clear && read -p "Would you like to install FFmpeg?  This is important for select media's proper playback.  It also may be necessary to play videos on YouTube or other online streaming services.  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install ffmpeg; break;;
+        [Y]* ) sudo dnf install ffmpeg -y; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
     esac
 done
 
-while true; do
-    clear && read -p "Would you like to install FFmpeg?  This is important for select media's proper playback.  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
-
->  " yns
-    case $yns in
-        [Y]* ) sudo dnf install ffmpeg; break;;
-        [N]* ) exit;;
-        [S]* ) break;;
-        * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
-    esac
-done
 
 while true; do
     clear && read -p "Would you like to install Flatpak?  This will also automatically add the FlatHub repository to Flatpak and install FlatSeal.  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install flatpak && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.github.tchx84.Flatseal; break;;
+        [Y]* ) sudo dnf install flatpak -y && flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak install flathub com.github.tchx84.Flatseal; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
@@ -113,7 +102,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) flatpak install flathub im.riot.Riot; break;;
+        [Y]* ) flatpak install flathub im.riot.Riot -y; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
@@ -125,9 +114,9 @@ while true; do
 
 >  " yns
     case $yns in
-        [K]* ) sudo dnf install kmail; break;;
-        [T]* ) sudo dnf install thunderbird; break;;
-        [G]* ) sudo dnf install geary; break;;
+        [K]* ) sudo dnf install kmail -y; break;;
+        [T]* ) sudo dnf install thunderbird -y; break;;
+        [G]* ) sudo dnf install geary -y; break;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
     esac
@@ -138,7 +127,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install steam; break;;
+        [Y]* ) sudo dnf install steam -y; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
@@ -146,11 +135,11 @@ while true; do
 done
 
 while true; do
-    clear && read -p "Would you like to install GloriousEggroll's Proton version?  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
+    clear && read -p "Would you like to install GloriousEggroll's Proton version?  If you did not install Steam in the previous step, please skip this.  Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install steam && nohup steam & disown && sleep 5 && pkill steam && cd ~/Downloads && wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.16-GE-1/Proton-6.16-GE-1.tar.gz && wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.16-GE-1/Proton-6.16-GE-1.sha512sum && sha512sum -c Proton-6.16-GE-1.sha512sum | grep FAILED && echo "Installation of ProtonGE could not be completed due to an invalid SHA512 signature." >> errorlog.txt && mkdir ~/.steam/root/compatibilitytools.d && tar -xf Proton-VERSION.tar.gz -C ~/.steam/root/compatibilitytools.d/; break;;
+        [Y]* ) sudo dnf install steam -y && nohup steam & disown && sleep 5 && pkill steam && cd ~/Downloads && wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.16-GE-1/Proton-6.16-GE-1.tar.gz && wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.16-GE-1/Proton-6.16-GE-1.sha512sum && sha512sum -c Proton-6.16-GE-1.sha512sum | grep FAILED && echo "Installation of ProtonGE could not be completed due to an invalid SHA512 signature." >> errorlog.txt && mkdir ~/.steam/root/compatibilitytools.d && tar -xf Proton-VERSION.tar.gz -C ~/.steam/root/compatibilitytools.d/; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
@@ -162,7 +151,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install lutris; break;;
+        [Y]* ) sudo dnf install lutris -y; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
@@ -174,7 +163,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install ufw && sudo ufw default deny incoming && sudo ufw default allow outgoing && sudo ufw enable; break;;
+        [Y]* ) sudo dnf install ufw -y && sudo ufw default deny incoming && sudo ufw default allow outgoing && sudo ufw enable; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
