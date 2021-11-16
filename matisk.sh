@@ -41,7 +41,7 @@ while true; do
 
 >  " yns
     case $yns in
-        [Y]* ) sudo dnf install akmod-nvidia && sudo dnf install xorg-x11-drv-nvidia-cuda; break;;
+        [Y]* ) sudo dnf install akmod-nvidia && sudo dnf install xorg-x11-drv-nvidia-cuda -y; break;;
         [N]* ) exit;;
         [S]* ) break;;
         * ) clear && echo "Please type \"Y\" to continue, \"S\" to skip, or \"N\" to exit.";;
